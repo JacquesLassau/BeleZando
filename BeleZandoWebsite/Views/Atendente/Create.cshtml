@@ -1,0 +1,71 @@
+﻿@model BeleZando.Models.Atendente
+@Scripts.Render("~/BLL/Atendente/Mascaras.js")
+@{ViewBag.Title = "Cadastro";}
+
+@using (Html.BeginForm("Create", "Atendente", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Cadastro</h2>
+        <p><b>Inclua Aqui um Novo Atendente no Sistema</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row group-title">
+                    <div class="col-md-4 clearfix"></div>
+                    <div class="col-md-8">
+                        <p class="group-title">Dados Pessoais</p>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.NomeAtendente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.NomeAtendente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preencha aqui" } })
+                        <b>@Html.ValidationMessageFor(model => model.NomeAtendente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.EmailAtendente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.EmailAtendente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preencha aqui" } })
+                        <b>@Html.ValidationMessageFor(model => model.EmailAtendente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>               
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.TelefoneAtendente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.TelefoneAtendente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preencha aqui" } })
+                        <b>@Html.ValidationMessageFor(model => model.TelefoneAtendente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SenhaAtendente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenhaAtendente, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "preencha aqui" } })
+                <b>@Html.ValidationMessageFor(model => model.SenhaAtendente, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SituacaoAtendente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SituacaoAtendente, new SelectList(new string[] { "Ativo", "Bloqueado" }), new { @class = "form-control" })
+                <b>@Html.ValidationMessageFor(model => model.SituacaoAtendente, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            <div class="col-md-2 clearfix"></div>
+            <div class="col-md-10">
+                <button type="submit" value="Confirmar" class="btn btn-roxo"><i class="fa fa-check"></i> Confirmar</button>
+                <a href="@Url.Action("Create", "Atendente")" class="btn btn-roxo"><i class="fa fa-remove"></i> Cancelar</a>
+                <a href="@Url.Action("Consult", "Atendente")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}

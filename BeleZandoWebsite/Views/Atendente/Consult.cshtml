@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BeleZando.Models.Atendente>
+@Scripts.Render("~/BLL/Atendente/Mascaras.js")
+@Scripts.Render("~/BLL/Atendente/ModalList.js")
+@Scripts.Render("~/BLL/Atendente/SelectedModalList.js")
+@{ViewBag.Title = "Busca";}
+
+@using (Html.BeginForm("SearchAtendente", "Atendente", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Buscar Atendente</h2>
+        <p><b>Encontre Aqui o Atendente que Deseja</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row space-form">
+                    <label class="control-label col-md-2 col-xs-12">Código</label>
+                    <div class="col-md-4 col-xs-6">
+                        @Html.TextBox("CodigoAtendente", null, new { @class = "form-control", onfocusout = "TxtPesquisarAtendente()", placeholder = "preencha aqui" })
+                    </div>                   
+                    <div class="offset-md-4 col-xs-6">
+                        <a class="btn btn-roxo btn-search" name="pesquisaAtendente" id="pesquisaAtendente" data-toggle="modal" data-target="#listarAtendente" onclick="BtnPesquisarAtendente()"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <label class="control-label col-md-2"><b>Nome</b></label>
+                    <div class="col-md-8">
+                        @Html.TextBox("NomeAtendente", null, new { @class = "form-control", placeholder = "preenchimento automático", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <div class="col-md-2 clearfix"></div>
+                    <div class="col-md-10">
+                        <button type="submit" value="Detalhes" class="btn btn-roxo form-group" name="AcaoAtendente"><i class="fa fa-search"> </i> Detalhes</button>
+                        <button type="submit" value="Editar" class="btn btn-roxo form-group" name="AcaoAtendente"><i class="fa fa-edit"></i> Editar</button>
+                        <button type="submit" value="Excluir" class="btn btn-roxo form-group" name="AcaoAtendente"><i class="fa fa-trash"></i> Excluir</button>
+                        <hr />
+                        <a href="@Url.Action("Create", "Atendente")" class="btn btn-roxo form-group"><i class="fa fa-user-plus"> </i> &nbsp;Cadastrar Novo Atendente</a>
+                        <hr />
+                        <a href="@Url.Action("Index", "Inicio")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar ao Menu Principal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="listarAtendente" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm modal-md modal-lg">
+        <div class="modal-content">            
+            <div class="modal-header modal-roxo">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>BUSCAR ATENDENTE</strong><br /></h4>
+                <p class="lead">Consulte a lista abaixo e clique para selecionar um Atendente:</p>
+            </div>
+            <div class="modal-body text-center modalListAtedente">                
+                <iframe src="@Url.Action("ModalListAtendente", "Atendente")"frameborder="0" id="iModalListAtendente"></iframe>                
+            </div>
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}

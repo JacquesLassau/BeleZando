@@ -1,0 +1,87 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #4c2882, rgba(0, 0, 0, 0));
+}
+
+iframe {
+    width: 100%;
+    height: 360px;
+    background:none;
+    
+}
+
+
+#link-cabecalho {
+    color: #fff;
+}
+
+    #link-cabecalho:hover {
+        color: #f264b1;
+    }
+
+.btn-roxo {
+    background-color: #4c2882;
+    color: #fff;
+}
+
+    .btn-roxo:hover {
+        background-color: #800080;
+        color: #fff;
+    }
+
+.space-form {
+    padding: 6px;
+}
+
+.group-title {
+    text-transform: uppercase;
+    color: #4c2882;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.title {
+    text-transform: uppercase;
+    color: #4c2882;
+}
+
+.btn-search {
+    margin-left: -30px;
+}
+
+.modal-roxo {
+    background-color: #4c2882;
+    color: #fff;
+}
+
+.navbar-fixed-top {
+    background-color: #4c2882;
+    font-weight: 700;
+}

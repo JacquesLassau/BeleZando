@@ -1,0 +1,144 @@
+﻿@model BeleZando.Models.Profissional
+@Scripts.Render("~/BLL/Profissional/Mascaras.js")
+@{ViewBag.Title = "Excluir";}
+
+@using (Html.BeginForm("Delete", "Profissional", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Excluir</h2>
+        <p><b>Aqui Você Pode Excluir o Profissional</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CodigoProfissional)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row group-title">
+                    <div class="col-md-4 clearfix"></div>
+                    <div class="col-md-8">
+                        <p class="group-title">Dados Pessoais</p>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.RazaoSocialProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.RazaoSocialProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.RazaoSocialProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.NomeFantasiaProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.NomeFantasiaProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.NomeFantasiaProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.EmailProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.EmailProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.EmailProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.CpfProfissional, htmlAttributes: new { @class = "control-label col-md-4", type = "text", @readonly = "readonly" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.CpfProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.CpfProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.CnpjProfissional, htmlAttributes: new { @class = "control-label col-md-4", type = "text", @readonly = "readonly" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.CnpjProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.CnpjProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.TelefoneProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.TelefoneProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.TelefoneProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <div class="col-md-6">
+                <div class="row group-title">
+                    <div class="col-md-4 clearfix"></div>
+                    <div class="col-md-8">
+                        <p class="group-title">Dados Endereço</p>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.NumeroEnderecoProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.NumeroEnderecoProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.NumeroEnderecoProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.EnderecoProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.EnderecoProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.EnderecoProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.BairroProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.BairroProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.BairroProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.CidadeProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.CidadeProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.CidadeProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.EstadoProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.EstadoProfissional, new SelectList(new string[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }), new { @class = "form-control", disabled = "disabled" })
+                        <b>@Html.ValidationMessageFor(model => model.EstadoProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.CepProfissional, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.CepProfissional, new { htmlAttributes = new { @class = "form-control", type = "text", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.CepProfissional, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SenhaProfissional, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenhaProfissional, new { htmlAttributes = new { @class = "form-control", type = "password", @readonly = "readonly" } })
+                <b>@Html.ValidationMessageFor(model => model.SenhaProfissional, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SituacaoProfissional, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SituacaoProfissional, new SelectList(new string[] { "Ativo", "Bloqueado" }), new { @class = "form-control", disabled = "disabled" })
+                <b>@Html.ValidationMessageFor(model => model.SituacaoProfissional, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            <div class="col-md-2 clearfix"></div>
+            <div class="col-md-10">
+                <button type="submit" value="Confirmar" class="btn btn-roxo"><i class="fa fa-check"></i> Confirmar</button>
+                <a href="@Url.Action("Consult", "Profissional")" class="btn btn-roxo"><i class="fa fa-remove"></i> Cancelar</a>
+                <a href="@Url.Action("Consult", "Profissional")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}

@@ -1,0 +1,51 @@
+﻿@Scripts.Render("~/BLL/Cliente/Mascaras.js")
+@Scripts.Render("~/BLL/Cliente/ModalList.js")
+@Scripts.Render("~/BLL/Cliente/SelectedModalList.js")
+@{ViewBag.Title = "Busca";}
+
+@using (Html.BeginForm("SearchCliente", "Cliente", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Buscar Cliente</h2>
+        <p><b>Encontre Aqui o Cliente que Deseja</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row space-form">
+                    <label class="control-label col-md-2 col-xs-12">Código</label>
+                    <div class="col-md-4 col-xs-6">
+                        @Html.TextBox("CodigoCliente", null, new { @class = "form-control", onfocusout = "TxtPesquisarCliente()", placeholder = "preencha aqui" })
+                    </div>
+                    <div class="offset-md-4 col-xs-6">
+                        <a class="btn btn-roxo btn-search" name="pesquisaCliente" id="pesquisaCliente" data-toggle="modal" data-target="#listarCliente" onclick="BtnPesquisarCliente()"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <label class="control-label col-md-2"><b>Nome</b></label>
+                    <div class="col-md-8">
+                        @Html.TextBox("NomeCliente", null, new { @class = "form-control", placeholder = "preenchimento automático", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <div class="col-md-2 clearfix"></div>
+                    <div class="col-md-10">
+                        <button type="submit" value="Detalhes" class="btn btn-roxo form-group" name="AcaoCliente"><i class="fa fa-search"> </i> Detalhes</button>
+                        <button type="submit" value="Editar" class="btn btn-roxo form-group" name="AcaoCliente"><i class="fa fa-edit"></i> Editar</button>
+                        <button type="submit" value="Excluir" class="btn btn-roxo form-group" name="AcaoCliente"><i class="fa fa-trash"></i> Excluir</button>
+                        <hr />
+                        <a href="@Url.Action("Create", "Cliente")" class="btn btn-roxo form-group"><i class="fa fa-user-plus"> </i> &nbsp;Cadastrar Novo Cliente</a>
+                        <hr />
+                        <a href="@Url.Action("Index", "Inicio")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar ao Menu Principal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@{ Html.RenderPartial("~/Views/Cliente/ModalListCliente.cshtml");}
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BeleZando.Models.Profissional>
+@Scripts.Render("~/BLL/Profissional/Mascaras.js")
+@Scripts.Render("~/BLL/Profissional/ModalList.js")
+@Scripts.Render("~/BLL/Profissional/SelectedModalList.js")
+@{ViewBag.Title = "Busca";}
+
+@using (Html.BeginForm("SearchProfissional", "Profissional", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Buscar Profissional</h2>
+        <p><b>Encontre Aqui o Profissional que Deseja</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row space-form">
+                    <label class="control-label col-md-2 col-xs-12">Código</label>
+                    <div class="col-md-4 col-xs-6">
+                        @Html.TextBox("CodigoProfissional", null, new { @class = "form-control", onfocusout = "TxtPesquisarProfissional()", placeholder = "preencha aqui" })
+                    </div>
+                    <div class="offset-md-4 col-xs-6">
+                        <a class="btn btn-roxo btn-search" name="pesquisaProfissional" id="pesquisaProfissional" data-toggle="modal" data-target="#listarProfissional" onclick="BtnPesquisarProfissional()"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <label class="control-label col-md-2"><b>Nome</b></label>
+                    <div class="col-md-8">
+                        @Html.TextBox("NomeFantasiaProfissional", null, new { @class = "form-control", placeholder = "preenchimento automático", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row space-form">
+                    <div class="col-md-2 clearfix"></div>
+                    <div class="col-md-10">
+                        <button type="submit" value="Detalhes" class="btn btn-roxo form-group" name="AcaoProfissional"><i class="fa fa-search"> </i> Detalhes</button>
+                        <button type="submit" value="Editar" class="btn btn-roxo form-group" name="AcaoProfissional"><i class="fa fa-edit"></i> Editar</button>
+                        <button type="submit" value="Excluir" class="btn btn-roxo form-group" name="AcaoProfissional"><i class="fa fa-trash"></i> Excluir</button>
+                        <hr />
+                        <a href="@Url.Action("Create", "Profissional")" class="btn btn-roxo form-group"><i class="fa fa-user-plus"> </i> &nbsp;Cadastrar Novo Profissional</a>
+                        <hr />
+                        <a href="@Url.Action("Index", "Inicio")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar ao Menu Principal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="listarProfissional" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm modal-md modal-lg">
+        <div class="modal-content">
+            <div class="modal-header modal-roxo">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>BUSCAR PROFISSIONAL</strong><br /></h4>
+                <p class="lead">Consulte a lista abaixo e clique para selecionar um Profissional:</p>
+            </div>
+            <div class="modal-body text-center">
+                <hr />
+                @foreach (var item in Model)
+                {
+                    <div class="row" style="margin-top:24px;">
+                        <div class="col-md-1">@Html.DisplayFor(modelItem => item.CodigoProfissional)</div>
+                        <div class="col-md-2"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => item.NomeFantasiaProfissional)</div>
+                        <div class="col-md-4"><i class="fa fa-envelope"></i> @Html.DisplayFor(modelItem => item.EmailProfissional)</div>
+                        <div class="col-md-3"><i class="fa fa-info-circle"></i> @Html.DisplayFor(modelItem => item.CpfProfissional)</div>
+                        <div class="col-md-2">
+                            <button class="btn btn-roxo" name="lnkCodigoProfissional" id="lnkCodigoProfissional-@(item.CodigoProfissional)" onclick='SelecionarProfissionalLinkModal("lnkCodigoProfissional-@(item.CodigoProfissional)")' value="@(item.CodigoProfissional)">Selecione <i class="fa fa-check"></i></button>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>                    
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}
+
+
+
+

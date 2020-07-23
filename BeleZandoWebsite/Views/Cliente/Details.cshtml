@@ -1,0 +1,86 @@
+﻿@model BeleZando.Models.Cliente
+@Scripts.Render("~/BLL/Cliente/Mascaras.js")
+@{ViewBag.Title = "Detalhes";}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2 class="title">Detalhes</h2>
+        <p><b>Aqui Você Pode Consultar o Cliente</b></p>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CodigoCliente)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row group-title">
+                    <div class="col-md-4 clearfix"></div>
+                    <div class="col-md-8">
+                        <p class="group-title">Dados Pessoais</p>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.NomeCliente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.NomeCliente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preenchimento automático", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.NomeCliente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.EmailCliente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.EmailCliente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preenchimento automático", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.EmailCliente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.CpfCliente, htmlAttributes: new { @class = "control-label col-md-4", type = "text", placeholder = "preenchimento automático", @readonly = "readonly" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.CpfCliente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preenchimento automático", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.CpfCliente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.DataNascimentoCliente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.DataNascimentoCliente, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        <b>@Html.ValidationMessageFor(model => model.DataNascimentoCliente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <div class="row space-form">
+                    @Html.LabelFor(model => model.TelefoneCliente, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.TelefoneCliente, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "preenchimento automático", @readonly = "readonly" } })
+                        <b>@Html.ValidationMessageFor(model => model.TelefoneCliente, "", new { @class = "text-danger" })</b>
+                    </div>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SenhaCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenhaCliente, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "preenchimento automático", @readonly = "readonly" } })
+                <b>@Html.ValidationMessageFor(model => model.SenhaCliente, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            @Html.LabelFor(model => model.SituacaoCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SituacaoCliente, new SelectList(new string[] { "Ativo", "Bloqueado" }), new { @class = "form-control", disabled = "disabled" })
+                <b>@Html.ValidationMessageFor(model => model.SituacaoCliente, "", new { @class = "text-danger" })</b>
+            </div>
+        </div>
+        <div class="row space-form">
+            <div class="col-md-2 clearfix"></div>
+            <div class="col-md-10">
+                <a href="@Url.Action("Consult", "Cliente")" class="btn btn-roxo"><i class="fa fa-remove"></i> Cancelar</a>
+                <a href="@Url.Action("Consult", "Cliente")" class="btn btn-roxo"><i class="fa fa-mail-reply"></i> Voltar</a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {@Scripts.Render("~/bundles/jqueryval")}
+
