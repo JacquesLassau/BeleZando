@@ -2,6 +2,7 @@
 @Scripts.Render("~/BLL/Atendente/Mascaras.js")
 @Scripts.Render("~/BLL/Atendente/ModalList.js")
 @Scripts.Render("~/BLL/Atendente/SelectedModalList.js")
+@Scripts.Render("~/BLL/Atendente/Consult.js")
 @{ViewBag.Title = "Busca";}
 
 @using (Html.BeginForm("SearchAtendente", "Atendente", FormMethod.Get))
@@ -19,7 +20,7 @@
                     <label class="control-label col-md-2 col-xs-12">Código</label>
                     <div class="col-md-4 col-xs-6">
                         @Html.TextBox("CodigoAtendente", null, new { @class = "form-control", onfocusout = "TxtPesquisarAtendente()", placeholder = "preencha aqui" })
-                    </div>                   
+                    </div>
                     <div class="offset-md-4 col-xs-6">
                         <a class="btn btn-roxo btn-search" name="pesquisaAtendente" id="pesquisaAtendente" data-toggle="modal" data-target="#listarAtendente" onclick="BtnPesquisarAtendente()"><i class="fa fa-search"></i></a>
                     </div>
@@ -49,16 +50,16 @@
 
 <div id="listarAtendente" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm modal-md modal-lg">
-        <div class="modal-content">            
+        <div class="modal-content">
             <div class="modal-header modal-roxo">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><strong>BUSCAR ATENDENTE</strong><br /></h4>
                 <p class="lead">Consulte a lista abaixo e clique para selecionar um Atendente:</p>
             </div>
-            <div class="modal-body text-center modalListAtedente">                
-                <iframe src="@Url.Action("ModalListAtendente", "Atendente")"frameborder="0" id="iModalListAtendente"></iframe>                
+            <div class="modal-body text-center modalListAtedente">
+                <iframe src="@Url.Action("ModalListAtendente", "Atendente")" frameborder="0" id="iModalListAtendente"></iframe>
             </div>
-            <div class="modal-footer">                
+            <div class="modal-footer">
                 <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>
             </div>
         </div>
