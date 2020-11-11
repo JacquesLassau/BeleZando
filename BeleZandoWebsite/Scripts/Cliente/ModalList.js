@@ -1,4 +1,4 @@
-﻿function TxtPesquisarCliente() {
+﻿function FnTxtPesquisarCliente() {
 
     event.preventDefault();    
 
@@ -20,7 +20,7 @@
     });
 }
 
-function BtnPesquisarCliente() {
+function FnBtnPesquisarCliente() {
 
     $("#CodigoCliente").val(null);  
     $("#NomeCliente").val(null);    

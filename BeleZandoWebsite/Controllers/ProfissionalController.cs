@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BeleZando.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BeleZando.Models;
+using X.PagedList;
 
 namespace BeleZandoWebsite.Controllers
 {
@@ -39,7 +37,19 @@ namespace BeleZandoWebsite.Controllers
         [HttpGet]
         public ActionResult Consult()
         {            
-            return View(db.Profissional.ToList());
+            return View();
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult _ModalListProfissional()
+        {
+            return PartialView();
+        }
+
+        [HttpGet]
+        public ActionResult IframeModalListProfissional(int pagina = 1)
+        {
+            return View(db.Profissional.OrderBy(a => a.CodigoProfissional).ToPagedList(pagina, 5));
         }
 
         [HttpGet]

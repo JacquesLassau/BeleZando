@@ -1,4 +1,4 @@
-﻿function TxtPesquisarAtendente() {
+﻿function FnTxtPesquisarAtendente() {
 
     event.preventDefault();
     var item = document.getElementById("CodigoAtendente").value;
@@ -17,8 +17,9 @@
     });
 }
 
-function BtnPesquisarAtendente() {
+function FnBtnPesquisarAtendente() {
 
     document.getElementById("NomeAtendente").value = null;
+    document.getElementById("CodigoAtendente").value = null;
 
 }

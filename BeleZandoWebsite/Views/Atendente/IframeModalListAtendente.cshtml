@@ -1,7 +1,7 @@
 ﻿@using X.PagedList.Mvc
 @model X.PagedList.PagedList<BeleZando.Models.Atendente>
-@Scripts.Render("~/BLL/Atendente/ModalList.js")
-@Scripts.Render("~/BLL/Atendente/SelectedModalList.js")
+@Scripts.Render("~/Scripts/Atendente/ModalList.js")
+@Scripts.Render("~/Scripts/Atendente/SelectedModalList.js")
 @{Layout = null;}
 
 <!DOCTYPE Html>
@@ -24,11 +24,21 @@
 
         .pagination-container {
             background-color: #fff;
-            background-image:none;
+            background-image: none;
         }
 
-        .modalListAtedente{
+        .modalListAtedente {
             background-color: #fff;
+        }
+
+        .buttonPagination ul li a {
+            background-color: #4C2882;
+            color: #fff;
+        }
+
+        .buttonPagination ul li span {
+            background-color: #fff;
+            color: #4C2882;
         }
     </style>
 </head>
@@ -38,9 +48,9 @@
     {
         <div class="row modalListAtedente">
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">@Html.DisplayFor(modelItem => item.CodigoAtendente)</div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => item.NomeAtendente)</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => item.NomeAtendente)</div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><i class="fa fa-envelope"></i> @Html.DisplayFor(modelItem => item.EmailAtendente)</div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><i class="fa fa-info-circle"></i> @Html.DisplayFor(modelItem => item.TelefoneAtendente)</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><i class="fa fa-info-circle"></i> @Html.DisplayFor(modelItem => item.TelefoneAtendente)</div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <button class="btn btn-roxo" name="lnkCodigoAtendente" id="lnkCodigoAtendente-@(item.CodigoAtendente)" onclick='SelecionarAtendenteLinkModal("lnkCodigoAtendente-@(item.CodigoAtendente)")' value="@(item.CodigoAtendente)">Selecione <i class="fa fa-check"></i></button>
             </div>
@@ -48,7 +58,13 @@
         <hr />
     }
 
-    @Html.PagedListPager(Model, pagina => Url.Action("ModalListAtendente", new { pagina }))
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @Html.PagedListPager(Model, pagina => Url.Action("IframeModalListAtendente", new { pagina }), new PagedListRenderOptions { LinkToFirstPageFormat = "<<", LinkToPreviousPageFormat = "<", LinkToNextPageFormat = ">", LinkToLastPageFormat = ">>", MaximumPageNumbersToDisplay = 5 })
+        </div>
+    </div>
+
+
 
 </body>
 </html>

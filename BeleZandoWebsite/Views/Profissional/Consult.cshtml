@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<BeleZando.Models.Profissional>
-@Scripts.Render("~/BLL/Profissional/Mascaras.js")
-@Scripts.Render("~/BLL/Profissional/ModalList.js")
-@Scripts.Render("~/BLL/Profissional/SelectedModalList.js")
+@Scripts.Render("~/Scripts/Profissional/Consult.js")
+@Scripts.Render("~/Scripts/Profissional/Mascaras.js")
+@Scripts.Render("~/Scripts/Profissional/ModalList.js")
+@Scripts.Render("~/Scripts/Profissional/SelectedModalList.js")
 @{ViewBag.Title = "Busca";}
 
 @using (Html.BeginForm("SearchProfissional", "Profissional", FormMethod.Get))
@@ -47,36 +48,7 @@
     </div>
 }
 
-<div id="listarProfissional" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-sm modal-md modal-lg">
-        <div class="modal-content">
-            <div class="modal-header modal-roxo">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><strong>BUSCAR PROFISSIONAL</strong><br /></h4>
-                <p class="lead">Consulte a lista abaixo e clique para selecionar um Profissional:</p>
-            </div>
-            <div class="modal-body text-center">
-                <hr />
-                @foreach (var item in Model)
-                {
-                    <div class="row" style="margin-top:24px;">
-                        <div class="col-md-1">@Html.DisplayFor(modelItem => item.CodigoProfissional)</div>
-                        <div class="col-md-2"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => item.NomeFantasiaProfissional)</div>
-                        <div class="col-md-4"><i class="fa fa-envelope"></i> @Html.DisplayFor(modelItem => item.EmailProfissional)</div>
-                        <div class="col-md-3"><i class="fa fa-info-circle"></i> @Html.DisplayFor(modelItem => item.CpfProfissional)</div>
-                        <div class="col-md-2">
-                            <button class="btn btn-roxo" name="lnkCodigoProfissional" id="lnkCodigoProfissional-@(item.CodigoProfissional)" onclick='SelecionarProfissionalLinkModal("lnkCodigoProfissional-@(item.CodigoProfissional)")' value="@(item.CodigoProfissional)">Selecione <i class="fa fa-check"></i></button>
-                        </div>
-                    </div>
-                    <hr />
-                }
-            </div>
-            <div class="modal-footer">                
-                <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>                    
-            </div>
-        </div>
-    </div>
-</div>
+@{ Html.RenderPartial("~/Views/Profissional/_ModalListProfissional.cshtml");}
 
 @section Scripts {@Scripts.Render("~/bundles/jqueryval")}
 

@@ -43,8 +43,14 @@ namespace BeleZandoWebsite.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public PartialViewResult _ModalListAtendente()
+        {
+            return PartialView();
+        }
+
         [HttpGet]
-        public ActionResult ModalListAtendente(int pagina = 1)
+        public ActionResult IframeModalListAtendente(int pagina = 1)
         {
             return View(db.Atendente.OrderBy(a => a.CodigoAtendente).ToPagedList(pagina, 5));
         }

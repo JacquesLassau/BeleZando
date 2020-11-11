@@ -1,0 +1,17 @@
+﻿<div id="listarCliente" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm modal-md modal-lg">
+        <div class="modal-content">
+            <div class="modal-header modal-roxo">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>BUSCAR Cliente</strong><br /></h4>
+                <p class="lead">Consulte a lista abaixo e clique para selecionar um Cliente:</p>
+            </div>
+            <div class="modal-body text-center">
+                <iframe src="@Url.Action("IframeModalListCliente", "Cliente")" frameborder="0" id="IframeModalListCliente"></iframe>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<div id="listarAtendente" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm modal-md modal-lg">
+        <div class="modal-content">
+            <div class="modal-header modal-roxo">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>BUSCAR ATENDENTE</strong><br /></h4>
+                <p class="lead">Consulte a lista abaixo e clique para selecionar um Atendente:</p>
+            </div>
+            <div class="modal-body text-center modalListAtedente">
+                <iframe src="@Url.Action("IframeModalListAtendente", "Atendente")" frameborder="0" id="IframeModalListAtendente"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-roxo" data-dismiss="modal"><i class="fa fa-reply"></i> Voltar</button>
+            </div>
+        </div>
+    </div>
+</div>

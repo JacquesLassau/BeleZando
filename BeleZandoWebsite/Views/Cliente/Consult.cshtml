@@ -1,6 +1,8 @@
-﻿@Scripts.Render("~/BLL/Cliente/Mascaras.js")
-@Scripts.Render("~/BLL/Cliente/ModalList.js")
-@Scripts.Render("~/BLL/Cliente/SelectedModalList.js")
+﻿@model IEnumerable<BeleZando.Models.Cliente>
+@Scripts.Render("~/Scripts/Cliente/Consult.js")
+@Scripts.Render("~/Scripts/Cliente/Mascaras.js")
+@Scripts.Render("~/Scripts/Cliente/ModalList.js")
+@Scripts.Render("~/Scripts/Cliente/SelectedModalList.js")
 @{ViewBag.Title = "Busca";}
 
 @using (Html.BeginForm("SearchCliente", "Cliente", FormMethod.Get))
@@ -46,6 +48,6 @@
     </div>
 }
 
-@{ Html.RenderPartial("~/Views/Cliente/ModalListCliente.cshtml");}
+@{ Html.RenderPartial("~/Views/Cliente/_ModalListCliente.cshtml");}
 
 @section Scripts {@Scripts.Render("~/bundles/jqueryval")}

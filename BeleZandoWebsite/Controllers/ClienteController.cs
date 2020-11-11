@@ -38,15 +38,21 @@ namespace BeleZandoWebsite.Controllers
         }
 
         [HttpGet]
-        public ActionResult Consult(int pagina = 1)
+        public ActionResult Consult()
         {
-            return View((db.Cliente.OrderBy(a => a.CodigoCliente).ToPagedList(pagina, 5)));
+            return View();
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult _ModalListCliente()
+        {
+            return PartialView();
         }
 
         [HttpGet]
-        public PartialViewResult ModalListCliente()
+        public ActionResult IframeModalListCliente(int pagina = 1)
         {
-            return PartialView();
+            return View((db.Cliente.OrderBy(a => a.CodigoCliente).ToPagedList(pagina, 5)));
         }
 
 

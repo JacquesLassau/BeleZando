@@ -1,0 +1,71 @@
+﻿@using X.PagedList.Mvc
+@model X.PagedList.PagedList<BeleZando.Models.Profissional>
+@Scripts.Render("~/Scripts/Profissional/ModalList.js")
+@Scripts.Render("~/Scripts/Profissional/SelectedModalList.js")
+@{Layout = null;}
+
+<!DOCTYPE Html>
+<html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        body {
+            overflow-x: hidden;
+            height: 100%;
+            margin-top: -50px;
+            background-color: #fff;
+        }
+
+        .pagination-container {
+            background-color: #fff;
+            background-image: none;
+        }
+
+        .modalListProfissional {
+            background-color: #fff;
+        }
+
+        .buttonPagination ul li a {
+            background-color: #4C2882;
+            color: #fff;
+        }
+
+        .buttonPagination ul li span {
+            background-color: #fff;
+            color: #4C2882;
+        }
+    </style>
+</head>
+<body class="pagination-container">
+    <hr />
+    @foreach (var item in Model)
+    {
+        <div class="row modalListProfissional">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">@Html.DisplayFor(modelItem => item.CodigoProfissional)</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => item.NomeFantasiaProfissional)</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><i class="fa fa-envelope"></i> @Html.DisplayFor(modelItem => item.EmailProfissional)</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"><i class="fa fa-info-circle"></i> @Html.DisplayFor(modelItem => item.CpfProfissional)</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <button class="btn btn-roxo" name="lnkCodigoProfissional" id="lnkCodigoProfissional-@(item.CodigoProfissional)" onclick='SelecionarProfissionalLinkModal("lnkCodigoProfissional-@(item.CodigoProfissional)")' value="@(item.CodigoProfissional)">Selecione <i class="fa fa-check"></i></button>
+            </div>
+        </div>
+        <hr />
+    }
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            @Html.PagedListPager(Model, pagina => Url.Action("IframeModalListProfissional", new { pagina }), new PagedListRenderOptions { LinkToFirstPageFormat = "<<", LinkToPreviousPageFormat = "<", LinkToNextPageFormat = ">", LinkToLastPageFormat = ">>", MaximumPageNumbersToDisplay = 5 })
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+

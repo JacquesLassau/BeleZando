@@ -177,15 +177,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BLL\Atendente\Mascaras.js" />
-    <Content Include="BLL\Atendente\ModalList.js" />
-    <Content Include="BLL\Atendente\SelectedModalList.js" />
-    <Content Include="BLL\Cliente\Mascaras.js" />
-    <Content Include="BLL\Cliente\ModalList.js" />
-    <Content Include="BLL\Cliente\SelectedModalList.js" />
-    <Content Include="BLL\Profissional\Mascaras.js" />
-    <Content Include="BLL\Profissional\ModalList.js" />
-    <Content Include="BLL\Profissional\SelectedModalList.js" />
+    <Content Include="Scripts\Cliente\Consult.js" />
+    <Content Include="Scripts\Atendente\Consult.js" />
+    <Content Include="Scripts\Atendente\Mascaras.js" />
+    <Content Include="Scripts\Atendente\ModalList.js" />
+    <Content Include="Scripts\Atendente\SelectedModalList.js" />
+    <Content Include="Scripts\Cliente\Mascaras.js" />
+    <Content Include="Scripts\Cliente\ModalList.js" />
+    <Content Include="Scripts\Cliente\SelectedModalList.js" />
+    <Content Include="Scripts\Profissional\Consult.js" />
+    <Content Include="Scripts\Profissional\Mascaras.js" />
+    <Content Include="Scripts\Profissional\ModalList.js" />
+    <Content Include="Scripts\Profissional\SelectedModalList.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -238,11 +241,16 @@
     <Content Include="Views\Atendente\Delete.cshtml" />
     <Content Include="Views\Atendente\Details.cshtml" />
     <Content Include="Views\Atendente\Edit.cshtml" />
-    <Content Include="Views\Atendente\ModalListAtendente.cshtml" />
-    <Content Include="Views\Cliente\ModalListCliente.cshtml" />
+    <Content Include="Views\Cliente\_ModalListCliente.cshtml" />
+    <Content Include="Views\Cliente\IframeModalListCliente.cshtml" />
+    <Content Include="Views\Atendente\IframeModalListAtendente.cshtml" />
+    <Content Include="Views\Atendente\_ModalListAtendente.cshtml" />
+    <Content Include="Views\Profissional\_ModalListProfissional.cshtml" />
+    <Content Include="Views\Profissional\IframeModalListProfissional.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BLL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
